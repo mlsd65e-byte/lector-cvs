@@ -5,12 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lector de CSV Personalizado</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
-        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-        th { background-color: #f2f2f2; }
-        input[type="file"] { margin-bottom: 10px; }
-        #filter { margin-bottom: 10px; padding: 5px; }
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 20px; 
+            background-color: #e8f5e8; /* Verde claro para fondo */
+            color: #2e7d32; /* Verde oscuro para texto */
+        }
+        h1 { 
+            color: #1b5e20; /* Verde más oscuro para encabezado */
+            text-align: center;
+        }
+        input[type="file"], input[type="text"] { 
+            margin-bottom: 10px; 
+            padding: 8px; 
+            border: 2px solid #d32f2f; /* Rojo para bordes */
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        button { 
+            padding: 8px 15px; 
+            background-color: #d32f2f; /* Rojo para botón */
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            margin-left: 10px;
+        }
+        button:hover { 
+            background-color: #388e3c; /* Verde al pasar el mouse */
+        }
+        table { 
+            border-collapse: collapse; 
+            width: 100%; 
+            margin-top: 20px; 
+            border: 2px solid #388e3c; /* Verde para borde de tabla */
+        }
+        th { 
+            background-color: #4caf50; /* Verde para encabezados de tabla */
+            color: white; 
+            padding: 10px; 
+            text-align: left; 
+        }
+        td { 
+            border: 1px solid #81c784; /* Verde claro para celdas */
+            padding: 8px; 
+            text-align: left; 
+        }
+        tr:nth-child(even) { 
+            background-color: #f1f8e9; /* Verde muy claro para filas pares */
+        }
+        tr:nth-child(odd) { 
+            background-color: #ffebee; /* Rojo muy claro para filas impares */
+        }
+        tr:hover { 
+            background-color: #c8e6c9; /* Verde suave al pasar el mouse sobre filas */
+        }
     </style>
 </head>
 <body>
