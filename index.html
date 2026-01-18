@@ -3,72 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lector de CSV Personalizado</title>
+    <title>Lector de Actividad</title>
     <style>
         body { 
-            font-family: Arial, sans-serif; 
-            margin: 20px; 
-            background-color: #e8f5e8; /* Verde claro para fondo */
-            color: #2e7d32; /* Verde oscuro para texto */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            background: linear-gradient(135deg, #e8f5e8 0%, #ffebee 100%); /* Gradiente verde a rojo */
+            color: #2e7d32; 
+            min-height: 100vh;
+        }
+        header { 
+            text-align: center; 
+            margin-bottom: 30px; 
+            position: relative;
+        }
+        header::before { 
+            content: '📊'; 
+            font-size: 3em; 
+            display: block; 
+            margin-bottom: 10px;
         }
         h1 { 
-            color: #1b5e20; /* Verde más oscuro para encabezado */
-            text-align: center;
+            color: #1b5e20; 
+            font-size: 2.5em; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1); 
+            margin: 0;
+        }
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            background: rgba(255, 255, 255, 0.9); 
+            padding: 20px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         input[type="file"], input[type="text"] { 
-            margin-bottom: 10px; 
-            padding: 8px; 
-            border: 2px solid #d32f2f; /* Rojo para bordes */
-            border-radius: 5px;
-            background-color: #fff;
+            margin-bottom: 15px; 
+            padding: 10px; 
+            border: 2px solid #d32f2f; 
+            border-radius: 8px; 
+            background-color: #fff; 
+            width: 100%; 
+            max-width: 400px; 
+            transition: border-color 0.3s;
+        }
+        input[type="file"]:focus, input[type="text"]:focus { 
+            border-color: #388e3c; 
+            outline: none;
         }
         button { 
-            padding: 8px 15px; 
-            background-color: #d32f2f; /* Rojo para botón */
+            padding: 10px 20px; 
+            background: linear-gradient(45deg, #d32f2f, #f44336); /* Gradiente rojo */
             color: white; 
             border: none; 
-            border-radius: 5px; 
+            border-radius: 8px; 
             cursor: pointer; 
-            margin-left: 10px;
+            margin-left: 10px; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2); 
+            transition: all 0.3s;
         }
         button:hover { 
-            background-color: #388e3c; /* Verde al pasar el mouse */
+            background: linear-gradient(45deg, #388e3c, #4caf50); /* Gradiente verde al hover */
+            transform: translateY(-2px);
         }
         table { 
             border-collapse: collapse; 
             width: 100%; 
             margin-top: 20px; 
-            border: 2px solid #388e3c; /* Verde para borde de tabla */
+            border: 2px solid #388e3c; 
+            border-radius: 8px; 
+            overflow: hidden; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         th { 
-            background-color: #4caf50; /* Verde para encabezados de tabla */
+            background: linear-gradient(45deg, #4caf50, #66bb6a); /* Gradiente verde para encabezados */
             color: white; 
-            padding: 10px; 
+            padding: 12px; 
             text-align: left; 
+            font-weight: bold;
         }
         td { 
-            border: 1px solid #81c784; /* Verde claro para celdas */
-            padding: 8px; 
+            border: 1px solid #81c784; 
+            padding: 10px; 
             text-align: left; 
+            transition: background-color 0.3s;
         }
         tr:nth-child(even) { 
-            background-color: #f1f8e9; /* Verde muy claro para filas pares */
+            background-color: #f1f8e9; 
         }
         tr:nth-child(odd) { 
-            background-color: #ffebee; /* Rojo muy claro para filas impares */
+            background-color: #ffebee; 
         }
         tr:hover { 
-            background-color: #c8e6c9; /* Verde suave al pasar el mouse sobre filas */
+            background-color: #c8e6c9; 
+            transform: scale(1.01); 
+            transition: all 0.2s;
+        }
+        footer { 
+            text-align: center; 
+            margin-top: 30px; 
+            color: #666; 
+            font-size: 0.9em;
         }
     </style>
 </head>
 <body>
-    <h1>Lector de Archivos CSV</h1>
-    <input type="file" id="csvFile" accept=".csv">
-    <br>
-    <input type="text" id="filter" placeholder="Filtrar por columna (ej: nombre)">
-    <button onclick="filterTable()">Filtrar</button>
-    <table id="csvTable"></table>
+    <header>
+        <h1>Lector de Actividad</h1>
+    </header>
+    <div class="container">
+        <input type="file" id="csvFile" accept=".csv">
+        <br>
+        <input type="text" id="filter" placeholder="Filtrar por columna (ej: nombre)">
+        <button onclick="filterTable()">Filtrar</button>
+        <table id="csvTable"></table>
+    </div>
+    <footer>
+        <p>Sube tu archivo CSV y visualiza tus datos de actividad de forma fácil y personalizada.</p>
+    </footer>
 
     <script>
         document.getElementById('csvFile').addEventListener('change', function(event) {
